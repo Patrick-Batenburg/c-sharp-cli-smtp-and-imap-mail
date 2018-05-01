@@ -3,20 +3,20 @@ using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Net.Smtp;
 using MimeKit;
-using System;
 using System.Linq;
+using DotNetMail = System.Net.Mail;
 
 namespace SmtpAndImapClient
 {
     class Program
     {
-        private static System.Net.Mail.MailAddress from = new System.Net.Mail.MailAddress("example@example.com", "example");
+        private static DotNetMail.MailAddress from = new DotNetMail.MailAddress("example@example.com", "example");
         private static string password = "mqxfqibxryatleks";
-        private static System.Net.Mail.MailAddress to = new System.Net.Mail.MailAddress("example2@example.com", "example2");
+        private static DotNetMail.MailAddress to = new DotNetMail.MailAddress("example2@example.com", "example2");
 
         public static void Main(string[] args)
         {
-            //netMailSendMessage("123", "123");
+            //dotNetMailSendMessage("123", "123");
             sendMessage("123", "123");
             readMessage();
         }
@@ -89,9 +89,9 @@ I just wanted to let you know that Monica and I were going to go play some paint
         /// </summary>
         /// <param name="subject">The subject line for this e-mail message.</param>
         /// <param name="body">The message body for this e-mail message.</param>
-        private static void netMailSendMessage(string subject, string body)
+        private static void dotNetMailSendMessage(string subject, string body)
         {
-            using (System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient())
+            using (DotNetMail.SmtpClient client = new DotNetMail.SmtpClient())
             {
                 client.Port = 587;
                 client.Host = "smtp.gmail.com";
@@ -100,7 +100,7 @@ I just wanted to let you know that Monica and I were going to go play some paint
                 client.UseDefaultCredentials = false;
                 client.Credentials = new System.Net.NetworkCredential(from.Address, password);
 
-                using (System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage(from, to) { Subject = subject, Body = body })
+                using (DotNetMail.MailMessage message = new DotNetMail.MailMessage(from, to) { Subject = subject, Body = body })
                 {
                     client.Send(message);
                 }
