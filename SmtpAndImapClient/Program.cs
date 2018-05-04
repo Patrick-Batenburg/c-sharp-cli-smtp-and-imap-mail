@@ -16,15 +16,15 @@ namespace SmtpAndImapClient
 
         public static void Main(string[] args)
         {
-            //dotNetMailSendMessage("123", "123");
-            sendMessage("123", "123");
-            readMessage();
+            ///dotNetMailSendMessage("123", "123");
+            SendMessage("123", "123");
+            ReadMessage();
         }
 
         /// <summary>
         /// Reads all the messages.
         /// </summary>
-        private static void readMessage()
+        private static void ReadMessage()
         {
             using (ImapClient client = new ImapClient())
             {
@@ -59,7 +59,7 @@ namespace SmtpAndImapClient
         /// </summary>
         /// <param name="subject">The subject line for this e-mail message.</param>
         /// <param name="body">The message body for this e-mail message.</param>
-        private static void sendMessage(string subject, string body)
+        private static void SendMessage(string subject, string body)
         {
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress(from.DisplayName, from.Address));
@@ -89,7 +89,7 @@ I just wanted to let you know that Monica and I were going to go play some paint
         /// </summary>
         /// <param name="subject">The subject line for this e-mail message.</param>
         /// <param name="body">The message body for this e-mail message.</param>
-        private static void dotNetMailSendMessage(string subject, string body)
+        private static void DotNetMailSendMessage(string subject, string body)
         {
             using (DotNetMail.SmtpClient client = new DotNetMail.SmtpClient())
             {
