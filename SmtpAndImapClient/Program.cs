@@ -16,8 +16,8 @@ namespace SmtpAndImapClient
 
         public static void Main(string[] args)
         {
-            ///dotNetMailSendMessage("123", "123");
-            SendMessage("123", "123");
+			///DotNetMailSendMessage("123", "123");
+			SendMessage("123", "123");
             ReadMessage();
         }
 
